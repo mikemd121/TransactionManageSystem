@@ -10,6 +10,7 @@ namespace AccountManagementSystem.Infrastructure
         protected override void Load(ContainerBuilder builder)
         {
             // Register services with interfaces
+            builder.RegisterType<TransactionService>().SingleInstance();
             builder.RegisterType<ConsoleInputOutputHandler>().As<IInputOutputHandler>().SingleInstance();
             builder.RegisterType<TransactionService>().As<IHandler>().SingleInstance();
             builder.RegisterType<RuleService>().As<IHandler>().SingleInstance();

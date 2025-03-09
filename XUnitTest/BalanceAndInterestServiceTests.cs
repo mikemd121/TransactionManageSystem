@@ -6,15 +6,14 @@ using System.Linq;
 
 namespace AccountManagementSystem.Tests
 {
-    public class PrintAccountServiceTests
+    public class BalanceAndInterestServiceTests
     {
-        private readonly PrintAccountService _printAccountService;
-        private readonly Mock<PrintAccountService> _printMockAccountService;
-        public PrintAccountServiceTests()
+        private readonly TransactionService _printAccountService;
+        private readonly Mock<TransactionService> _printMockAccountService;
+        public BalanceAndInterestServiceTests()
         {
-
-            _printAccountService = new PrintAccountService();
-            _printMockAccountService = new Mock<PrintAccountService>();
+            _printAccountService = new TransactionService();
+            _printMockAccountService = new Mock<TransactionService>();
         }
 
         [Fact]

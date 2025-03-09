@@ -9,19 +9,21 @@ class Program
 {
     static void Main()
     {
-        var builder = new ContainerBuilder();
+        try
+        {
+            var builder = new ContainerBuilder();
 
-        // Register dependencies
-        builder.RegisterModule<DependencyModule>();
+            builder.RegisterModule<DependencyModule>();
+            var container = builder.Build();
+            var serviceProvider = new AutofacServiceProvider(container);
+            var accountManagementService = serviceProvider.GetRequiredService<AccountManagementService>();
+            accountManagementService.Run();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+        }
 
-        // Build the container
-        var container = builder.Build();
-
-        // Create Autofac service provider
-        var serviceProvider = new AutofacServiceProvider(container);
-
-        // Resolve the main service and run the application
-        var accountManagementService = serviceProvider.GetRequiredService<AccountManagementService>();
-        accountManagementService.Run();
     }
 }

@@ -16,7 +16,6 @@ public class TransactionServiceTests
         _mockHandler = new Mock<IHandler>();
     }
 
-
     [Theory]
     [InlineData("20250308", true)] // Valid format
     [InlineData("2025-03-08", false)] // Invalid format
